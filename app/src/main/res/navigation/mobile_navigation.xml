@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_stats">
+
+    <fragment
+        android:id="@+id/navigation_stats"
+        android:name="com.example.roadsafetyapplication.ui.stats.StatsFragment"
+        android:label="Stats"
+        tools:layout="@layout/fragment_stats" />
+
+    <fragment
+        android:id="@+id/navigation_ride"
+        android:name="com.example.roadsafetyapplication.ui.ride.RideFragment"
+        android:label="Ride"
+        tools:layout="@layout/fragment_ride" />
+
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.example.roadsafetyapplication.ui.account.AccountFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/navigation_SETTINGS"
+        android:name="com.example.roadsafetyapplication.ui.Settings.SettingsFragment"
+        android:label="This is Setting"
+        tools:layout="@layout/fragment_settings" />
+
+
+
+
+</navigation>
