@@ -28,17 +28,28 @@ import com.google.android.gms.location.LocationServices;
 
 public class LocationService extends Service {
 
+    final static String MY_ACTION = "MY_ACTION";
+
     private LocationCallback locationCallback = new LocationCallback() {
         @Override
         public void onLocationResult(LocationResult locationResult) {
             super.onLocationResult(locationResult);
             if (locationResult != null && locationResult.getLastLocation() != null) {
-                float speed = locationResult.getLastLocation().getSpeed();
+                double speed = locationResult.getLastLocation().getSpeed();
                 double latitude = locationResult.getLastLocation().getLatitude();
                 double longitude = locationResult.getLastLocation().getLongitude();
 
                 Log.d("Result lat-long", latitude + " ," + longitude);
                 Log.d("Result-speed", speed + " ");
+
+                Intent intent = new Intent();
+                intent.setAction(MY_ACTION);
+
+                intent.putExtra("SPEED", speed);
+                intent.putExtra("LATITUDE",latitude);
+                sendBroadcast(intent);
+
+
             }
         }
     };
@@ -89,7 +100,7 @@ public class LocationService extends Service {
         }
 
         LocationRequest locationRequest = new LocationRequest();
-        locationRequest.setInterval(4000);
+        locationRequest.setInterval(3000);
         locationRequest.setFastestInterval(2000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 

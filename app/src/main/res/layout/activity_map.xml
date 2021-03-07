@@ -13,10 +13,10 @@
         android:text="start location update"
         app:layout_constraintBottom_toTopOf="@+id/bt_stoplocationupdate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.788" />
+        app:layout_constraintVertical_bias="0.789" />
 
     <Button
         android:id="@+id/bt_stoplocationupdate"
@@ -25,18 +25,38 @@
         android:text="stop location update"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.556"
+        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_speed"
-        android:layout_width="134dp"
-        android:layout_height="51dp"
+        android:layout_width="227dp"
+        android:layout_height="73dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/bt_startlocationupdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_overspeed"
+        android:layout_width="321dp"
+        android:layout_height="70dp"
+        android:background="#FF0000"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#FFFBFB"
+        android:textSize="22sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_stoplocationupdate"
+        app:layout_constraintVertical_bias="0.258" />
 </androidx.constraintlayout.widget.ConstraintLayout>

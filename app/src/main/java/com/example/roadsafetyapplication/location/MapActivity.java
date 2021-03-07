@@ -8,8 +8,10 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,8 +26,11 @@ public class MapActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION=1;
     private static final int RESULT_CODE = 11;
-    Handler h=new Handler();
     TextView tv_speed;
+    TextView tv_overspeed;
+
+    MyReceiver myReceiver;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,7 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
 
         tv_speed=findViewById(R.id.tv_speed);
+        tv_overspeed=findViewById(R.id.tv_overspeed);
 
         findViewById(R.id.bt_startlocationupdate).setOnClickListener(new View.OnClickListener() {
     @Override
@@ -61,6 +67,24 @@ public class MapActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onStart() {
+        //Register BroadcastReceiver
+        //to receive event from our service
+        myReceiver = new MyReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(LocationService.MY_ACTION);
+        registerReceiver(myReceiver, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(myReceiver);
+        super.onStop();
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -111,13 +135,51 @@ public class MapActivity extends AppCompatActivity {
 
     private void stopLocationService(){
 
-        if(!isLocationServiceRunning()){
+        if(isLocationServiceRunning()){
             Intent intent=new Intent(getApplicationContext(),LocationService.class);
             intent.setAction(Constants.ACTION_STOP_LOCATION_SERVICE);
             startService(intent);
             Toast.makeText(this,"Location service stopped",Toast.LENGTH_SHORT).show();
         }
     }
+
+    private class MyReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context arg0, Intent arg1) {
+
+            double speed = arg1.getDoubleExtra("SPEED", 0);
+            double latitude = arg1.getDoubleExtra("LATITUDE", 0);
+
+            speed=speed*3.6;
+
+            String ans=String.format("%.2f", speed);
+
+            if(speed>=0)
+            {
+                tv_speed.setText(ans+" km/hr");
+            }
+            else
+            {
+                tv_speed.setText("0-- km/hr");
+            }
+
+            if(speed>50){
+
+                tv_overspeed.setVisibility(View.VISIBLE);
+                tv_overspeed.setText("SPEED LIMIT REACHED!!! DANGEROUS");
+            }
+            else{
+                tv_overspeed.setVisibility(View.INVISIBLE);
+            }
+
+
+
+        }
+
+    }
+
+
 
 
 
