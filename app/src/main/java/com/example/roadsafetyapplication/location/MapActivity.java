@@ -3,6 +3,7 @@ package com.example.roadsafetyapplication.location;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,26 +11,37 @@ import androidx.fragment.app.FragmentTransaction;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.roadsafetyapplication.R;
+import com.github.anastr.speedviewlib.AwesomeSpeedometer;
+import com.github.anastr.speedviewlib.SpeedView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.Map;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -44,17 +56,21 @@ public class MapActivity extends AppCompatActivity {
     SeekBar seekBar;
     TextView speedLimit;
     private GoogleMap mMap;
-
+    SpeedView speedometer;
+    AwesomeSpeedometer awesomeSpeedometer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        tv_speed=findViewById(R.id.tv_speed);
+//        tv_speed=findViewById(R.id.tv_speed);
         tv_overspeed=findViewById(R.id.tv_overspeed);
         seekBar =findViewById(R.id.seekBar);
         speedLimit=findViewById(R.id.tv_currentspeedlimit);
-
+//        speedometer = findViewById(R.id.speedView);
+        awesomeSpeedometer=findViewById(R.id.awesomeSpeedometer);
+//        speedometer.setMaxSpeed(250);
+        awesomeSpeedometer.setMaxSpeed(250);
 
 //        event listener for seekbar
 
@@ -108,7 +124,6 @@ public class MapActivity extends AppCompatActivity {
                 stopLocationService();
             }
         });
-
 
 
     }
@@ -202,37 +217,38 @@ public class MapActivity extends AppCompatActivity {
 
             String ans=String.format("%.2f", speed);
 
-            if(speed>=0)
-            {
-                tv_speed.setText(ans+" km/hr");
-            }
-            else
-            {
-                tv_speed.setText("0-- km/hr");
-            }
+//            speedometer.speedTo((float) speed, 2000);
+            awesomeSpeedometer.speedTo((int) speed,2000);
+
+//            if(speed>=0)
+//            {
+//                tv_speed.setText(ans+" km/hr");
+//            }
+//            else
+//            {
+//                tv_speed.setText("0-- km/hr");
+//            }
 
             if(speed>speedlimit_value){
 
                 tv_overspeed.setVisibility(View.VISIBLE);
                 tv_overspeed.setText("SPEED LIMIT REACHED!!! DANGEROUS");
+
+
+//                generate a vibrartion
+
+                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    vibrator.vibrate(1000);
+                }
+
+
             }
             else{
                 tv_overspeed.setVisibility(View.INVISIBLE);
             }
-
-//
-//            MapsFragment frag = new MapsFragment();
-//            Bundle bundle = new Bundle();
-//            bundle.putDouble("latitude", latitude);
-//            bundle.putDouble("longitude", longitude);
-//
-//            frag.setArguments(bundle);
-//
-//            FragmentManager manager = getSupportFragmentManager();
-//            FragmentTransaction transaction = manager.beginTransaction();
-//            transaction.replace(R.id.layout_map,frag);
-//            transaction.commit();
-
 
 
 
