@@ -47,6 +47,7 @@ public class LocationService extends Service {
 
                 intent.putExtra("SPEED", speed);
                 intent.putExtra("LATITUDE",latitude);
+                intent.putExtra("LONGITUDE",longitude);
                 sendBroadcast(intent);
 
 

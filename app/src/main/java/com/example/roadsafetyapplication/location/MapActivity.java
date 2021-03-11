@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.app.Activity;
@@ -17,10 +19,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.view.View;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.roadsafetyapplication.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -31,6 +40,10 @@ public class MapActivity extends AppCompatActivity {
 
     MyReceiver myReceiver;
 
+    private int speedlimit_value=0;
+    SeekBar seekBar;
+    TextView speedLimit;
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +52,38 @@ public class MapActivity extends AppCompatActivity {
 
         tv_speed=findViewById(R.id.tv_speed);
         tv_overspeed=findViewById(R.id.tv_overspeed);
+        seekBar =findViewById(R.id.seekBar);
+        speedLimit=findViewById(R.id.tv_currentspeedlimit);
+
+
+//        event listener for seekbar
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                speedLimit.setText(progress+50+" km/hr");
+                speedlimit_value=progress+50;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
+////        adding map
+//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+//                .findFragmentById(R.id.map);
+//        mapFragment.getMapAsync(this);
+//
+//
+
 
         findViewById(R.id.bt_startlocationupdate).setOnClickListener(new View.OnClickListener() {
     @Override
@@ -143,6 +188,7 @@ public class MapActivity extends AppCompatActivity {
         }
     }
 
+
     private class MyReceiver extends BroadcastReceiver {
 
         @Override
@@ -150,6 +196,7 @@ public class MapActivity extends AppCompatActivity {
 
             double speed = arg1.getDoubleExtra("SPEED", 0);
             double latitude = arg1.getDoubleExtra("LATITUDE", 0);
+            double longitude= arg1.getDoubleExtra("LONGITUDE",0);
 
             speed=speed*3.6;
 
@@ -164,7 +211,7 @@ public class MapActivity extends AppCompatActivity {
                 tv_speed.setText("0-- km/hr");
             }
 
-            if(speed>50){
+            if(speed>speedlimit_value){
 
                 tv_overspeed.setVisibility(View.VISIBLE);
                 tv_overspeed.setText("SPEED LIMIT REACHED!!! DANGEROUS");
@@ -172,6 +219,21 @@ public class MapActivity extends AppCompatActivity {
             else{
                 tv_overspeed.setVisibility(View.INVISIBLE);
             }
+
+//
+//            MapsFragment frag = new MapsFragment();
+//            Bundle bundle = new Bundle();
+//            bundle.putDouble("latitude", latitude);
+//            bundle.putDouble("longitude", longitude);
+//
+//            frag.setArguments(bundle);
+//
+//            FragmentManager manager = getSupportFragmentManager();
+//            FragmentTransaction transaction = manager.beginTransaction();
+//            transaction.replace(R.id.layout_map,frag);
+//            transaction.commit();
+
+
 
 
 
