@@ -5,23 +5,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".location.MapActivity">
 
-    <TextView
-        android:id="@+id/tv_speed"
-        android:layout_width="219dp"
-        android:layout_height="58dp"
-        android:background="@drawable/round_corner"
-        android:fontFamily="@font/aclonica"
-        android:gravity="center"
-        android:text="0"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_startlocationupdate"
+
+    <!--    <com.github.anastr.speedviewlib.SpeedView-->
+    <!--        android:id="@+id/speedView"-->
+    <!--        android:layout_width="293dp"-->
+    <!--        android:layout_height="263dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <com.github.anastr.speedviewlib.AwesomeSpeedometer
+        android:id="@+id/awesomeSpeedometer"
+        android:layout_width="362dp"
+        android:layout_height="257dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.912" />
+        app:layout_constraintVertical_bias="0.26" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="306dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="280dp"
+        android:background="#FFFFFF"
+        android:hapticFeedbackEnabled="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/awesomeSpeedometer"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="434dp"
+        android:layout_height="78dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintVertical_bias="0.341">
+
+        <Button
+            android:id="@+id/bt_startlocationupdate"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_corner"
+            android:fontFamily="@font/aclonica"
+            android:text="START TRIP"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/bt_stoplocationupdate"
+            android:layout_width="153dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/round_corner"
+            android:fontFamily="@font/aclonica"
+            android:text="STOP TRIP"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_overspeed"
@@ -36,124 +93,59 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_stoplocationupdate"
-        app:layout_constraintVertical_bias="0.357" />
-
-    <Button
-        android:id="@+id/bt_startlocationupdate"
-        android:layout_width="168dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/round_corner"
-        android:fontFamily="@font/aclonica"
-        android:text="START TRIP"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_overspeed"
-        app:layout_constraintEnd_toStartOf="@+id/bt_stoplocationupdate"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.948" />
 
-    <Button
-        android:id="@+id/bt_stoplocationupdate"
-        android:layout_width="168dp"
-        android:layout_height="72dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:background="@drawable/round_corner"
-        android:fontFamily="@font/aclonica"
-        android:text="STOP TRIP"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.755" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="459dp" />
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="328dp"
-        android:layout_height="78dp"
-        android:layout_marginBottom="212dp"
-        android:hapticFeedbackEnabled="true"
-        app:layout_constraintBottom_toTopOf="@+id/tv_speed"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
-        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="473dp" />
 
     <TextView
         android:id="@+id/tv_currentspeedlimit"
-        android:layout_width="108dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginRight="56dp"
-        android:background="@drawable/round_corner"
+        android:layout_width="107dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="23dp"
+        android:background="@color/black"
         android:fontFamily="@font/aclonica"
         android:gravity="center"
         android:text="0"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/awesomeSpeedometer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
-        app:layout_constraintVertical_bias="0.384" />
-
-    <TextView
-        android:id="@+id/tv_label_speedlimit"
-        android:layout_width="245dp"
-        android:layout_height="53dp"
-        android:background="@drawable/round_corner"
-        android:fontFamily="@font/aclonica"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="Set Your Speed Limit"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.507" />
+        app:layout_constraintVertical_bias="0.15" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="193dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="212dp"
-        android:background="@drawable/round_corner"
+        android:layout_width="248dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="28dp"
+        android:background="@color/black"
         android:fontFamily="@font/aclonica"
         android:gravity="center"
         android:text="Current Speed Limit"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_startlocationupdate"
-        app:layout_constraintEnd_toStartOf="@+id/tv_currentspeedlimit"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
-        app:layout_constraintVertical_bias="0.897" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="271dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/round_corner"
-        android:fontFamily="@font/aclonica"
-        android:gravity="center"
-        android:text="Your Current Speed"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_speed"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

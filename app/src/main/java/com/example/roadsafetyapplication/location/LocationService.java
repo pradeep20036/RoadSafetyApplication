@@ -50,13 +50,9 @@ public class LocationService extends Service {
                 intent.putExtra("LONGITUDE",longitude);
                 sendBroadcast(intent);
 
-
             }
         }
     };
-
-
-
 
 
     @Nullable
