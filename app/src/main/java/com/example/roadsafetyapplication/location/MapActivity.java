@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Notification;
@@ -20,6 +21,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,6 +45,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Map;
+import java.util.Timer;
+
+import pl.droidsonroids.gif.GifDrawable;
+import pl.droidsonroids.gif.GifImageView;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -58,6 +65,11 @@ public class MapActivity extends AppCompatActivity {
     private GoogleMap mMap;
     SpeedView speedometer;
     AwesomeSpeedometer awesomeSpeedometer;
+    GifDrawable gif;
+    GifImageView gif1;
+
+    MediaPlayer mp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +83,10 @@ public class MapActivity extends AppCompatActivity {
         awesomeSpeedometer=findViewById(R.id.awesomeSpeedometer);
 //        speedometer.setMaxSpeed(250);
         awesomeSpeedometer.setMaxSpeed(250);
+        gif1=findViewById(R.id.gif);
+
+        gif1.setVisibility(View.INVISIBLE);
+        tv_overspeed.setVisibility(View.INVISIBLE);
 
 //        event listener for seekbar
 
@@ -206,6 +222,7 @@ public class MapActivity extends AppCompatActivity {
 
     private class MyReceiver extends BroadcastReceiver {
 
+        @SuppressLint("MissingPermission")
         @Override
         public void onReceive(Context arg0, Intent arg1) {
 
@@ -231,26 +248,28 @@ public class MapActivity extends AppCompatActivity {
 
             if(speed>speedlimit_value){
 
-                tv_overspeed.setVisibility(View.VISIBLE);
                 tv_overspeed.setText("SPEED LIMIT REACHED!!! DANGEROUS");
+                    tv_overspeed.setVisibility(View.VISIBLE);
+                    gif1.setVisibility(View.VISIBLE);
+
+
+//              Addding music
+                Uri uri = Uri.parse("android.resource://"+getPackageName()+"/raw/armani");
+                mp = MediaPlayer.create(getApplicationContext(), uri);
+                mp.setLooping(false);
+                mp.start();
+
 
 
 //                generate a vibrartion
-
-                Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
-                } else {
-                    vibrator.vibrate(1000);
-                }
 
 
             }
             else{
                 tv_overspeed.setVisibility(View.INVISIBLE);
+                gif1.setVisibility(View.INVISIBLE);
+
             }
-
-
 
 
         }
