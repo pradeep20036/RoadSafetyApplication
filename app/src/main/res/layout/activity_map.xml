@@ -20,41 +20,42 @@
 
     <com.github.anastr.speedviewlib.AwesomeSpeedometer
         android:id="@+id/awesomeSpeedometer"
-        android:layout_width="362dp"
-        android:layout_height="257dp"
+        android:layout_width="245dp"
+        android:layout_height="339dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <SeekBar
         android:id="@+id/seekBar"
-        android:layout_width="306dp"
-        android:layout_height="44dp"
-        android:layout_marginBottom="280dp"
+        android:layout_width="340dp"
+        android:layout_height="55dp"
         android:background="#FFFFFF"
         android:hapticFeedbackEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/awesomeSpeedometer"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="434dp"
-        android:layout_height="78dp"
+        android:layout_width="400dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="44dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar"
-        app:layout_constraintVertical_bias="0.341">
+        app:layout_constraintVertical_bias="0.004">
 
         <Button
             android:id="@+id/bt_startlocationupdate"
@@ -80,24 +81,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_overspeed"
-        android:layout_width="321dp"
-        android:layout_height="70dp"
-        android:background="#FF0000"
-        android:fontFamily="@font/aclonica"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="#FFFBFB"
-        android:textSize="22sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
@@ -113,14 +96,27 @@
         app:layout_constraintGuide_begin="473dp" />
 
     <TextView
-        android:id="@+id/tv_currentspeedlimit"
-        android:layout_width="107dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="23dp"
+        android:id="@+id/textView3"
+        android:layout_width="189dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="4dp"
         android:background="@color/black"
         android:fontFamily="@font/aclonica"
         android:gravity="center"
+        android:text="Speed Limit"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_currentspeedlimit"
+        android:layout_width="163dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/black"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center|left"
         android:text="0"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -129,23 +125,34 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintVertical_bias="0.053" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gif"
+        android:layout_width="133dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/giphy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.802" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="248dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="28dp"
-        android:background="@color/black"
-        android:fontFamily="@font/aclonica"
+        android:id="@+id/tv_overspeed"
+        android:layout_width="323dp"
+        android:layout_height="64dp"
+        android:background="#FF0000"
         android:gravity="center"
-        android:text="Current Speed Limit"
+        android:text="TextView"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/gif"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.795" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
