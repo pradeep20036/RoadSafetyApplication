@@ -20,42 +20,40 @@
 
     <com.github.anastr.speedviewlib.AwesomeSpeedometer
         android:id="@+id/awesomeSpeedometer"
-        android:layout_width="245dp"
-        android:layout_height="339dp"
+        android:layout_width="258dp"
+        android:layout_height="258dp"
         android:layout_marginTop="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
         android:id="@+id/seekBar"
-        android:layout_width="340dp"
-        android:layout_height="55dp"
-        android:background="#FFFFFF"
+        android:layout_width="359dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="12dp"
+        android:background="#675B5B"
         android:hapticFeedbackEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintTop_toBottomOf="@+id/awesomeSpeedometer"
+        app:layout_constraintVertical_bias="0.067" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="400dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="389dp"
+        android:layout_height="77dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
-        app:layout_constraintVertical_bias="0.004">
+        app:layout_constraintTop_toBottomOf="@+id/awesomeSpeedometer"
+        app:layout_constraintVertical_bias="0.266">
 
         <Button
             android:id="@+id/bt_startlocationupdate"
@@ -93,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="473dp" />
+        app:layout_constraintGuide_end="-14dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -129,30 +127,30 @@
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gif"
-        android:layout_width="133dp"
-        android:layout_height="101dp"
+        android:layout_width="81dp"
+        android:layout_height="70dp"
         android:layout_marginTop="64dp"
         android:src="@drawable/giphy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.802" />
+        app:layout_constraintVertical_bias="0.312" />
 
     <TextView
         android:id="@+id/tv_overspeed"
-        android:layout_width="323dp"
-        android:layout_height="64dp"
+        android:layout_width="300dp"
+        android:layout_height="74dp"
         android:background="#FF0000"
         android:gravity="center"
         android:text="TextView"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/gif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.795" />
+        app:layout_constraintVertical_bias="0.465" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

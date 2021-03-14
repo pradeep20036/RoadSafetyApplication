@@ -29,6 +29,8 @@ import com.google.android.gms.maps.GoogleMap;
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 
+/*
+
 public class MapActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION=1;
@@ -260,6 +262,6 @@ public class MapActivity extends AppCompatActivity {
 
 
 
-
+*/
 
 

@@ -26,10 +26,7 @@
         </activity>
 
         <activity android:name=".signup.SignUpActivity">
-            <intent-filter>
-                <category  android:name="android.intent.category.LAUNCHER"/>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
+
 
 
         </activity>
@@ -48,14 +45,21 @@
             android:value="@string/google_maps_key" />
 
 
-        <activity android:name=".ui.ride.location.MapActivity">
-
-
-        </activity>
+<!--        <activity android:name=".ui.ride.location.MapActivity">-->
+<!--            -->
+<!--        </activity>-->
 
         <activity
             android:name=".BottomNavigationActivity"
-            android:label="@string/title_activity_bottom_navigation" />
+            android:label="@string/title_activity_bottom_navigation" >
+
+            <intent-filter>
+                <category  android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+
+
+        </activity>
 
         <activity android:name=".MainActivity" />
 
