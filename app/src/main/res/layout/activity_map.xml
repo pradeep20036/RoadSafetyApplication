@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".location.MapActivity">
+    tools:context=".ui.ride.location.MapActivity">
 
 
     <!--    <com.github.anastr.speedviewlib.SpeedView-->

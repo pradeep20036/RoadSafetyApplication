@@ -1,4 +1,4 @@
-package com.example.roadsafetyapplication.ui.ride;
+package com.example.roadsafetyapplication.ui.ride.location;
 
 import android.os.Bundle;
 

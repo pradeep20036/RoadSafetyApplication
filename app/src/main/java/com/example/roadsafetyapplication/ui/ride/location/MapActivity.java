@@ -1,21 +1,13 @@
-package com.example.roadsafetyapplication.location;
+package com.example.roadsafetyapplication.ui.ride.location;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,12 +15,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -37,15 +24,7 @@ import android.widget.Toast;
 import com.example.roadsafetyapplication.R;
 import com.github.anastr.speedviewlib.AwesomeSpeedometer;
 import com.github.anastr.speedviewlib.SpeedView;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.util.Map;
-import java.util.Timer;
 
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
@@ -67,7 +46,6 @@ public class MapActivity extends AppCompatActivity {
     AwesomeSpeedometer awesomeSpeedometer;
     GifDrawable gif;
     GifImageView gif1;
-
     MediaPlayer mp;
 
     @Override
@@ -175,9 +153,6 @@ public class MapActivity extends AppCompatActivity {
             }
         }
 
-
-
-
     }
 
     private boolean isLocationServiceRunning() {
@@ -258,8 +233,6 @@ public class MapActivity extends AppCompatActivity {
                 mp = MediaPlayer.create(getApplicationContext(), uri);
                 mp.setLooping(false);
                 mp.start();
-
-
 
 //                generate a vibrartion
 

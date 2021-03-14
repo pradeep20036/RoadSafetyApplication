@@ -1,4 +1,4 @@
-package com.example.roadsafetyapplication.location;
+package com.example.roadsafetyapplication.ui.ride.location;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
