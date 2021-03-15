@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_ride"
-        android:name="com.example.roadsafetyapplication.ui.ride.RideFragment"
+        android:name="com.example.roadsafetyapplication.ui.ride.location.RideFragment"
         android:label="Ride"
         tools:layout="@layout/fragment_ride" />
 
