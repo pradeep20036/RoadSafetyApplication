@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -34,6 +35,12 @@ import pl.droidsonroids.gif.GifImageView;
 
 
 public class RideFragment extends Fragment {
+
+
+    public static final int frequency=0;
+    public static final String sharedPref="sharedPref";
+    public static final String freq="Frequency";
+    public static final String maximumSpeed="maxSpeed";
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION=1;
     private static final int RESULT_CODE = 11;
@@ -129,11 +136,6 @@ public class RideFragment extends Fragment {
             Toast.makeText(getContext(),"Location service stopped",Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
-
-
 
 
     @Override
@@ -242,6 +244,20 @@ public class RideFragment extends Fragment {
 //            }
 
             if(speed>speedlimit_value){
+
+//                saving data permanently in the database....
+                SharedPreferences sharedPreferences=getActivity().getSharedPreferences(sharedPref,Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.putInt(freq,sharedPreferences.getInt(freq,0)+1);
+
+
+                if(speed>sharedPreferences.getFloat(maximumSpeed,0)){
+                    editor.putFloat(maximumSpeed,(float)speed);
+                }
+
+
+                editor.apply();
+
 
                 tv_overspeed.setText("SPEED LIMIT REACHED!!! DANGEROUS");
                 tv_overspeed.setVisibility(View.VISIBLE);
