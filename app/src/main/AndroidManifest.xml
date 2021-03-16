@@ -11,6 +11,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +28,10 @@
 
         <activity android:name=".signup.SignUpActivity">
 
-
+            <intent-filter>
+                <category  android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
 
         </activity>
        
@@ -53,10 +57,7 @@
             android:name=".BottomNavigationActivity"
             android:label="@string/title_activity_bottom_navigation" >
 
-            <intent-filter>
-                <category  android:name="android.intent.category.LAUNCHER"/>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
+
 
 
         </activity>
