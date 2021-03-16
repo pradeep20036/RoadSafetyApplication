@@ -19,9 +19,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
 
-        android:theme="@style/Theme.Design.Light.NoActionBar">
+        android:theme="@style/Theme.RoadSafetyApplication">
         <activity android:name=".SignInActivity"></activity>
         <activity android:name=".signup.SignUpActivity">
+            <intent-filter>
+                <category  android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+
+
+        </activity>
        
 
         <!--
@@ -38,10 +45,6 @@
 
         <activity android:name=".location.MapActivity">
 
-            <intent-filter>
-                <category  android:name="android.intent.category.LAUNCHER"/>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
 
         </activity>
 
@@ -49,7 +52,7 @@
             android:name=".BottomNavigationActivity"
             android:label="@string/title_activity_bottom_navigation" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".signup.SignUpActivity" />
+
       
         <service
             android:name=".location.LocationService"
