@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home" />
+
+
     <item
         android:id="@+id/navigation_stats"
         android:icon="@drawable/statistics"
@@ -11,15 +19,16 @@
         android:icon="@drawable/placeholder"
         android:title="RIDE" />
 
+
+    <item
+        android:id="@+id/navigation_SETTINGS"
+        android:icon="@drawable/guide"
+        android:title="GUIDELINES" />
     <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/round_account_button_with_user_inside"
         android:title="ACCOUNT" />
 
-    <item
-        android:id="@+id/navigation_SETTINGS"
-        android:icon="@drawable/customer_support"
-        android:title="SETTINGS" />
 
 
 </menu>

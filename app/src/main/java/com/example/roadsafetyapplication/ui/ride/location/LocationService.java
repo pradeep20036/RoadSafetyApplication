@@ -1,4 +1,4 @@
-package com.example.roadsafetyapplication.location;
+package com.example.roadsafetyapplication.ui.ride.location;
 
 import android.Manifest;
 import android.app.NotificationChannel;
@@ -8,12 +8,9 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.Build;
-import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
-import android.os.ResultReceiver;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -28,7 +25,7 @@ import com.google.android.gms.location.LocationServices;
 
 public class LocationService extends Service {
 
-    final static String MY_ACTION = "MY_ACTION";
+   public final static String MY_ACTION = "MY_ACTION";
 
     private LocationCallback locationCallback = new LocationCallback() {
         @Override
@@ -61,7 +58,7 @@ public class LocationService extends Service {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    private void startLocationService() {
+    public void startLocationService() {
         String channelId = "location_notification_channel";
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -117,7 +114,7 @@ public class LocationService extends Service {
         startForeground(Constants.LOCATION_SERVICE_ID,builder.build());
     }
 
-    private void stopLocationService(){
+    public  void stopLocationService(){
         LocationServices.getFusedLocationProviderClient(this)
                 .removeLocationUpdates(locationCallback);
         stopForeground(true);
