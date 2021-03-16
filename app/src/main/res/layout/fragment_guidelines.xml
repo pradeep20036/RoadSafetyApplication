@@ -13,27 +13,28 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp"
-            android:scaleType="fitStart"
+            android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:padding="10dp"
+            android:scaleType="fitStart"
             android:src="@drawable/one" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="15dp"
             android:layout_marginTop="25dp"
-            android:scaleType="fitStart"
             android:adjustViewBounds="true"
-            android:src="@drawable/two" />
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:padding="15dp"
-            android:layout_marginTop="10dp"
             android:scaleType="fitStart"
+            android:src="@drawable/two" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:adjustViewBounds="true"
+            android:padding="15dp"
+            android:scaleType="fitStart"
             android:src="@drawable/three" />
         <ImageView
             android:layout_width="match_parent"
