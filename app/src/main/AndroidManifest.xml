@@ -28,10 +28,7 @@
 
         <activity android:name=".signup.SignUpActivity">
 
-            <intent-filter>
-                <category  android:name="android.intent.category.LAUNCHER"/>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
+
 
         </activity>
        
@@ -62,7 +59,14 @@
 
         </activity>
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:theme="@style/SplashScreenTheme">
+
+            <intent-filter>
+                <category  android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".ui.ride.location.LocationService"
