@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "988405990725",
-    "project_id": "roadsafetyproject-bfd40",
-    "storage_bucket": "roadsafetyproject-bfd40.appspot.com"
+    "project_number": "389177580581",
+    "project_id": "road-safety-application",
+    "storage_bucket": "road-safety-application.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:988405990725:android:f0ceee720b2ccfccbf6a2c",
+        "mobilesdk_app_id": "1:389177580581:android:6f7a6220889199d3a9f3cc",
         "android_client_info": {
           "package_name": "com.example.roadsafetyapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "988405990725-i2q1vu5e890cirlau5sdv0oikjk24h3a.apps.googleusercontent.com",
+          "client_id": "389177580581-11f2h0bl4aejo00don2s1sjii1g8q6b2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.roadsafetyapplication",
-            "certificate_hash": "19e1e2f364742969dc7753fcc8b0eebf2d725cc9"
+            "certificate_hash": "2cc6d81fccf2a74c6e5dad4deac1e4bf811fd75b"
           }
         },
         {
-          "client_id": "988405990725-0mqsgt251m76eb7aglb03jl9siikfga8.apps.googleusercontent.com",
+          "client_id": "389177580581-bckmcvvu972ia74upkns7uj412mtku32.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBLE4znURuN2nRcIQTL_BdTvzx7TtNfvcU"
+          "current_key": "AIzaSyB9Fghq5-dM91QaSqpCGaRpxQBTHWuUzdU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "988405990725-0mqsgt251m76eb7aglb03jl9siikfga8.apps.googleusercontent.com",
+              "client_id": "389177580581-bckmcvvu972ia74upkns7uj412mtku32.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

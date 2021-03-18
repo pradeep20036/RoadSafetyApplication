@@ -22,10 +22,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="211dp"
-            android:layout_height="239dp"
+            android:layout_width="163dp"
+            android:layout_height="162dp"
             android:layout_marginBottom="20dp"
-            app:srcCompat="@drawable/sign_up" />
+            app:srcCompat="@drawable/app_logo" />
 
         <EditText
             android:id="@+id/etEmail"
@@ -34,6 +34,7 @@
             android:layout_marginBottom="10dp"
             android:background="@color/white"
             android:ems="10"
+            android:layout_marginTop="40dp"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="9dp" />
@@ -90,6 +91,13 @@
             android:layout_height="wrap_content"
             android:visibility="invisible" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="OR"
+            android:textSize="18sp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -108,7 +116,7 @@
                 android:background="@drawable/round_corner"
                 android:drawableLeft="@drawable/ic_google"
                 android:padding="15dp"
-                android:text="SignUp Using Google"
+                android:text="Sign In with Google"
                 android:textColor="@color/black"
                 app:backgroundTint="@color/white"
                 app:cornerRadius="10dp" />

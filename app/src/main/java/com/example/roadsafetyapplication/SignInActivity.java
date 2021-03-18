@@ -44,16 +44,17 @@ public class SignInActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                showProgressBar();
+
                 String email = etEmail.getText().toString().trim();
                 String password= etPassword.getText().toString().trim();
                 if(TextUtils.isEmpty(email)){
                     etEmail.setError("Email can't be empty");
                 }
-                if(TextUtils.isEmpty(password)){
+                else if(TextUtils.isEmpty(password)){
                     etPassword.setError("Password can't be empty");
                 }
                 else {
+                    showProgressBar();
                     mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {

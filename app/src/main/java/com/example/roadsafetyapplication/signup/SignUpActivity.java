@@ -36,7 +36,7 @@ public class SignUpActivity extends AppCompatActivity {
     private static final String TAG = "GOOGLE SIGN IN";
     private final static  int RC_SIGN_IN = 9999;
     private FirebaseAuth mAuth;
-    FirebaseUser firebaseUser;
+//    FirebaseUser firebaseUser;
     Button bt_googleSignIn;
     ProgressBar progressBar;
     GoogleSignInClient mGoogleSignInClient;
@@ -51,11 +51,11 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         mAuth = FirebaseAuth.getInstance();
-        firebaseUser = mAuth.getCurrentUser();
+//        firebaseUser = mAuth.getCurrentUser();
 
-        if (firebaseUser != null && firebaseUser.isEmailVerified()) {
-            startActivity(new Intent(getApplicationContext(), BottomNavigationActivity.class));
-        }
+//        if (firebaseUser != null && firebaseUser.isEmailVerified()) {
+//            startActivity(new Intent(getApplicationContext(), BottomNavigationActivity.class));
+//        }
 
         bt_googleSignIn = findViewById(R.id.bt_google);
         progressBar = findViewById(R.id.progressbar);
@@ -90,18 +90,19 @@ public class SignUpActivity extends AppCompatActivity {
                     et_password.setError("Password can't be empty");
                     et_password.requestFocus();
                 }
-                if (TextUtils.isEmpty(password_2)) {
+                else if (TextUtils.isEmpty(password_2)) {
                     et_confirmPassword.setError("Please confirm your password");
                     et_confirmPassword.requestFocus();
                 }
-                if (password_1.length() <= 6) {
+                else if (password_1.length() <= 6) {
                     et_password.setError("Password must be greater than 6 letters");
                     et_password.requestFocus();
                 }
-                if (!password_1.equals(password_2)) {
+                else if (!password_1.equals(password_2)) {
                     et_confirmPassword.setError("Password didn't match");
                     et_confirmPassword.requestFocus();
-                } else {
+                }
+                else {
                     showProgressBar();
                     emailSignup(email, password_1);
                 }
@@ -163,7 +164,6 @@ public class SignUpActivity extends AppCompatActivity {
         Log.e(TAG,"Inside SignIn method");
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-        hideProgressBar();
     }
 
     private void firebaseAuthWithGoogle(String idToken) {
@@ -177,11 +177,13 @@ public class SignUpActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.e(TAG, "signInWithCredential:success");
 //                            FirebaseUser user = mAuth.getCurrentUser();
+                            hideProgressBar();
                             Intent intent = new Intent(getApplicationContext(), BottomNavigationActivity.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.e(TAG, "signInWithCredential:failure", task.getException());
+                            hideProgressBar();
                             Toast.makeText(getApplicationContext(),"Sign-in Failed",Toast.LENGTH_SHORT).show();
                         }
 
@@ -204,6 +206,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.e(TAG, "firebaseAuthWithGoogle:" + account.getId());
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
+                hideProgressBar();
                 // Google Sign In failed, update UI appropriately
                 Log.e(TAG, "Google sign in failed", e);
                 // ...
